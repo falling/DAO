@@ -1,5 +1,8 @@
+import bean.Bean;
 import bean.CustomerBean;
 import dao.DAO;
+
+import java.util.List;
 
 /**
  * Created by falling on 2016/4/21.
@@ -10,17 +13,20 @@ public class Test {
         DAO Dao = new DAO();
 
         //根据Primary Key查找
-//        System.out.println(Dao.getById("AROUT",Customer.class));
-//
-//        //根据名称查找
-//        List list = Dao.searchByName("Chri");
-//        for (Object object : list) {
-//            Customer customer = (Customer) object;
-//            System.out.println(customer.toString());
-//        }
-//
-//        //添加
-//        Customer bean = new Customer();
+//        Bean bean = new CustomerBean();
+//        bean.setId("AROUT");
+//        System.out.println(Dao.getById(bean));
+
+        //根据名称查找
+        List list = Dao.searchByName("Chri");
+        for (Object object : list) {
+            Bean customer = (CustomerBean) object;
+            System.out.println(customer.toString());
+        }
+
+
+        //添加
+//        CustomerBean bean = new CustomerBean();
 //        bean.setCompanyName("c");
 //        bean.setContactName("a");
 //        bean.setContactTitle("a");
@@ -29,18 +35,20 @@ public class Test {
 //        bean.setRegion("a");
 //        bean.setPostalCode("a");
 //        bean.setCountry("a");
-//        bean.setPhoneTest("a");
-//        bean.setFaxTest("a");
+//        bean.setPhone("a");
+//        bean.setFax("a");
 //        Dao.addBean(bean);
 
 //        //更新
 //        CustomerBean NewBean = new CustomerBean();
-//        NewBean.setId("8ac28486543bc29d01543bc29e660000");
+//        NewBean.setId("8ac2848654484489015448448b2f0000");
 //        NewBean.setCompanyName("abc");
-//
+
 //        Dao.updateCustomer(NewBean);
 
-        //根据PK删除
-//        Dao.deleteCustommer("8ac28486543bc0a901543bc0aa550000",Customer.class);
+        //根据PK删除Checked
+//        Bean bean = new CustomerBean();
+//        bean.setId("8ac284865448435c015448435d860000");
+//        Dao.deleteCustomer(bean);
     }
 }

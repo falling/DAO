@@ -42,12 +42,15 @@ public class CustomerBean implements Bean{
     }
 
     @Id
+    @Override
+    @Column(name = "CustomerID")
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
     public String getId() {
         return id;
     }
 
+    @Override
     public void setId(String id) {
         this.id = id;
     }

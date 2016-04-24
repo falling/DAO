@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class DAO {
 
-    //通用
+    //通用checked
     public Object getById(Bean bean) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -28,13 +28,13 @@ public class DAO {
     public List searchByName(String contactName) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        List list = session.createQuery("from Customer where ContactName like :contactName").setString("contactName", "%" + contactName + "%").list();
+        List list = session.createQuery("from CustomerBean where ContactName like :contactName").setString("contactName", "%" + contactName + "%").list();
         session.getTransaction().commit();
         return list;
     }
 
 
-    //通用
+    //通用checked
     public void addBean(Object bean) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -42,7 +42,7 @@ public class DAO {
         session.getTransaction().commit();
     }
 
-    //通用
+    //通用checked
     public void updateCustomer(@NotNull Object newBean) {
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -82,11 +82,11 @@ public class DAO {
     }
 
     //通用
-    public void deleteCustommer(String id, Class beanClass) {
+    public void deleteCustomer(Bean bean) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Object bean = session.get(beanClass, id);
-        session.delete(bean);
+        Object ob = session.get(bean.getClass(), bean.getId());
+        session.delete(ob);
         session.getTransaction().commit();
     }
 }
